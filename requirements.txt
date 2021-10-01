@@ -20,3 +20,9 @@ wincertstore==0.2
 yarg==0.1.9
 voila==0.2.14
 IPython==7.27.0
+numpy==1.21.2
+pandas==1.3.3 
+requests==2.26.0
+ipywidgets==7.5.1
+jsonschema==3.2.0
+
