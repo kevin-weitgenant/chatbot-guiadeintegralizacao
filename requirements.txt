@@ -19,3 +19,4 @@ widgetsnbextension==3.5.1
 wincertstore==0.2
 yarg==0.1.9
 voila==0.2.14
+IPython==7.27.0
