@@ -8,7 +8,6 @@ mistune==0.8.4
 pipreqs==0.4.10
 PyJWT==2.1.0
 PyPDF2==1.26.0
-pywin32==228
 pywinpty==0.5.7
 requests==2.26.0
 stdlib-list==0.8.0
