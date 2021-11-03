@@ -123,12 +123,12 @@
             .scrollIntoView({ block: "start", behavior: "smooth" });
           $.get("/get", { msg: rawText }).done(function(data) {
             function imprime(resposta){
-            var botHtml = '<p class="botText"><span>' + resposta+"BLUBLU" + "</span></p>";
-            $("#chatbox").append(botHtml);
+            var botHtml = '<p class="botText"><span>' + resposta+ + "</span></p>";
             $("#chatbox").append(botHtml);
             }
-            imprime(data)
-
+            data.respostas.forEach(imprime(data))
+            console.log("teste")
+            console.log(data)
             
             document
               .getElementById("userInput")
