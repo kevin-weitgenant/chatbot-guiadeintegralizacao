@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <title>    </title>
+  <title>chatbot documentos</title>
   <head>
+    <!--  Adicionar foto no titulo!
+      <link            
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
+    /> -->
 
+
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+
+    </script>
     <style>
+      
+      .collapse.in { display: inline !important; }
+      
       body {
         font-family: monospace;
       }
-      h1 {
-        background-color: whitesmoke;
-        display: inline-block;
-        font-size: 3em;
-        margin: 0;
-        padding: 14px;
+
+      .remainder{
+        display:none;
       }
+
+      .jumbotron, .jumbotron-fluid {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+      }
+      
       h3 {
         color: black;
         font-size: 20px;
@@ -32,35 +56,38 @@
         margin-right: auto;
         width: 40%;
         margin-top: 60px;
+        color: black;
       }
       #textInput {
         width: 90%;
         border: none;
         border-bottom: 3px solid black;
-        font-family: monospace;
+        font-family: Poppins;
         font-size: 17px;
       }
+      
       .userText {
-        color: white;
-        font-family: monospace;
-        font-size: 17px;
+        color: black;
+        font-family: Poppins ;
+        font-size: 20px;
         text-align: right;
-        line-height: 30px;
+        line-height: 40px;
       }
       .userText span {
-        background-color: #808080;
+        background-color: white;
         padding: 10px;
         border-radius: 2px;
       }
       .botText {
-        color: white;
-        font-family: monospace;
-        font-size: 17px;
+        color: black;
+        font-family: Poppins;
+        font-size: 20px;
         text-align: left;
-        line-height: 30px;
+        line-height: 40px;
+        ;
       }
       .botText span {
-        background-color: #4169e1;
+        background-color: white;
         padding: 10px;
         border-radius: 2px;
       }
@@ -73,46 +100,50 @@
       .boxed {
         margin-left: auto;
         margin-right: auto;
-        width: 78%;
+        width: 80%;
+        height: 100%;
         margin-top: 60px;
         border: 1px solid green;
       }
       .box {
         border: 2px solid black;
       }
+      .more{
+    background:lightblue;
+    color:navy;
+    font-size:13px;
+    padding:3px;
+    cursor:pointer;
+}
+
+
     </style>
   </head>
   <body>
-    <img />
-    <center>
-      <h1>
-        Chatbot Documentos UFPEL
-      </h1>
-    </center>
-    <h3>
-      <p>
-        Responde perguntas sobre o Guia de Integralização da UFPEL
-       
-      </p>
-    </h3>
+    
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <center><h1 class="display-4">Chatbot</h1></center>
+        
+        <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+      </div>
+    </div>
+
+
+
     <div class="box"></div>
     <div class="boxed">
       <div>
         <div id="chatbox">
-          <img
-            src="https://raw.githubusercontent.com/kevin-weitgenant/chatbot-guiadeintegralizacao/main/depositphotos_166853800-stock-illustration-chat-bot-icon-outline-robot.jpg"
-            alt="robo"
-            style="width:40px;height:40px;"
-          />
           <p class="botText">
-            <span>Olá, no que posso ajudar?</span>
+            <span>Olá! Alguma pergunta sobre os documentos? </span>
           </p>
         </div>
         <div id="userInput">
-          <input id="textInput" type="text" name="msg" placeholder="Message" />
+          <input id="textInput" type="text" name="msg" placeholder="Digite sua pergunta" />
         </div>
       </div>
-      <script>
+      <script>  
         function getBotResponse() {
           var rawText = $("#textInput").val();
           var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
@@ -123,10 +154,16 @@
             .scrollIntoView({ block: "start", behavior: "smooth" });
           $.get("/get", { msg: rawText }).done(function(data) {
             
-            var botHtml = '<p class="botText"><span>' + data+ + "</span></p>";
-            $("#chatbox").append(botHtml);
+            for (let resposta of data){
+              var teaser = '<span class="botText"> ' + resposta.slice(0,100) + "</span>";
+              var remainder = '<span class="collapse botText" id="more">' + resposta.slice(100) + "</span>";
+              var more = '<span> <a href="#more" data-toggle="collapse">... <i class="fa fa-caret-down"></i> </span>';
+              
+              
+              $("#chatbox").append(teaser,remainder,more, '<br>','<br>' );
+              
+            } 
             
-
             document
               .getElementById("userInput")
               .scrollIntoView({ block: "start", behavior: "smooth" });
@@ -140,4 +177,9 @@
       </script>
     </div>
   </body>
+ 
+ 
+
+
+
 </html>
