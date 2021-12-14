@@ -49,10 +49,10 @@ def askDiscovery(pergunta):
     
     
 
-    return result.get_result()["results"]
+    return result.get_result()["passages"]
 
 
-
+print(askDiscovery("curricularização"))
 
               
             

@@ -15,7 +15,7 @@ def get_bot_response():
     result = orquestrador.askDiscovery(userText)
 
     
-    answers = [result[x]["text"] for x in range (len(result)) if x< 3]           #retorna até 3 respostas, 
+    answers = [result[x]["passage_text"] for x in range (len(result)) if x< 3]           #retorna até 3 respostas, 
                                                                                          #limitadas por até 1000 caracteres
     return jsonify(answers)
 

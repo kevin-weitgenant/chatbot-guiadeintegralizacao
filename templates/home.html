@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <title>chatbot documentos passagens</title>
+  <title>chatbot documentos</title>
   <head>
     <!--  Adicionar foto no titulo!
       <link            
@@ -123,7 +123,7 @@
     
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <center><h1 class="display-4">Chatbot</h1></center>
+        <center><h1 class="display-4">Chatbot (Passagens)</h1></center>
         
         <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
       </div>
@@ -155,12 +155,8 @@
           $.get("/get", { msg: rawText }).done(function(data) {
             
             for (let resposta of data){
-              var teaser = '<span class="botText"> ' + resposta.slice(0,100) + "</span>";
-              var remainder = '<span class="collapse botText" id="more">' + resposta.slice(100) + "</span>";
-              var more = '<span> <a href="#more" data-toggle="collapse">... <i class="fa fa-caret-down"></i> </span>';
-              
-              
-              $("#chatbox").append(teaser,remainder,more, '<br>','<br>' );
+              var texto = '<span class="botText"> ' + resposta+ "</span>";              
+              $("#chatbox").append(texto, '<br>','<br>' );
               
             } 
             
